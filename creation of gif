@@ -1,0 +1,16 @@
+import pygifsicle
+import imageio
+import imageio_ffmpeg
+import PIL
+from pathlib import Path
+from pygifsicle import optimize
+from PIL import Image
+image_path=Path('images')
+images=list(image_path.glob('*.png'))
+image_list=[]
+for file_name in images:
+    image_list.append(imageio.imread(file_name))
+
+print(len(image_list))
+
+imageio.mimwrite('animated_pics.gif',image_list,fps=24,duration=1,loop=0)
